@@ -1,0 +1,147 @@
+From c5af88ba6b62e8a926aa156f52428348435fe254 Mon Sep 17 00:00:00 2001
+From: William Hubbs <w.d.hubbs@gmail.com>
+Date: Thu, 16 Jul 2009 22:24:07 -0500
+Subject: [PATCH 9/9] add gentoo linux support
+
+---
+ config/system.sh                       |    4 +++
+ config/systems/GentooLinux.mak         |   42 ++++++++++++++++++++++++++++++++
+ config/systems/Makefile                |    2 +
+ config/systems/unknown_GentooLinux.mak |   41 +++++++++++++++++++++++++++++++
+ 4 files changed, 89 insertions(+), 0 deletions(-)
+ create mode 100644 config/systems/GentooLinux.mak
+ create mode 100644 config/systems/unknown_GentooLinux.mak
+
+diff --git a/config/system.sh b/config/system.sh
+index af07781..9524af3 100644
+--- a/config/system.sh
++++ b/config/system.sh
+@@ -70,6 +70,10 @@ if [ "$OSTYPE" = Linux ]
+ 	then
+ 	OSTYPE=DebianGNULinux
+ 	OSREV=`cat /etc/debian_version`
++    elif [ -f "/etc/gentoo-release" ]
++    then
++    OSTYPE=GentooLinux
++    OSREV=
+     else
+ 	# Generic unknown GNU/Linux system.
+ 	OSTYPE=Linux
+diff --git a/config/systems/GentooLinux.mak b/config/systems/GentooLinux.mak
+new file mode 100644
+index 0000000..d3cc031
+--- /dev/null
++++ b/config/systems/GentooLinux.mak
+@@ -0,0 +1,42 @@
++ ###########################################################################
++ ##                                                                       ##
++ ##                Centre for Speech Technology Research                  ##
++ ##                     University of Edinburgh, UK                       ##
++ ##                         Copyright (c) 1996                            ##
++ ##                        All Rights Reserved.                           ##
++ ##                                                                       ##
++ ##  Permission is hereby granted, free of charge, to use and distribute  ##
++ ##  this software and its documentation without restriction, including   ##
++ ##  without limitation the rights to use, copy, modify, merge, publish,  ##
++ ##  distribute, sublicense, and/or sell copies of this work, and to      ##
++ ##  permit persons to whom this work is furnished to do so, subject to   ##
++ ##  the following conditions:                                            ##
++ ##   1. The code must retain the above copyright notice, this list of    ##
++ ##      conditions and the following disclaimer.                         ##
++ ##   2. Any modifications must be clearly marked as such.                ##
++ ##   3. Original authors' names are not deleted.                         ##
++ ##   4. The authors' names are not used to endorse or promote products   ##
++ ##      derived from this software without specific prior written        ##
++ ##      permission.                                                      ##
++ ##                                                                       ##
++ ##  THE UNIVERSITY OF EDINBURGH AND THE CONTRIBUTORS TO THIS WORK        ##
++ ##  DISCLAIM ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING      ##
++ ##  ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, IN NO EVENT   ##
++ ##  SHALL THE UNIVERSITY OF EDINBURGH NOR THE CONTRIBUTORS BE LIABLE     ##
++ ##  FOR ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES    ##
++ ##  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN   ##
++ ##  AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION,          ##
++ ##  ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF       ##
++ ##  THIS SOFTWARE.                                                       ##
++ ##                                                                       ##
++ ###########################################################################
++ ##                                                                       ##
++ ##                 Author: William Hubbs <williamh@gentoo.org>           ##
++ ## --------------------------------------------------------------------  ##
++ ## Settings for Gentoo Linux distributions.                              ##
++ ##                                                                       ##
++ ###########################################################################
++
++MANDIR=$(INSTALL_PREFIX)/share/man
++# Gentoo does not use termcap
++OS_LIBS = -ldl -lncurses
+diff --git a/config/systems/Makefile b/config/systems/Makefile
+index df166ce..a87ab78 100644
+--- a/config/systems/Makefile
++++ b/config/systems/Makefile
+@@ -41,6 +41,7 @@ SYSTEMS =					\
+ 	Linux.mak				\
+ 	RedHatLinux.mak				\
+ 	DebianGNULinux.mak			\
++	GentooLinux.mak			\
+ 	alpha_Linux.mak				\
+ 	alpha_OSF1V4.0.mak			\
+ 	alpha_RedHatLinux.mak			\
+@@ -95,6 +96,7 @@ SYSTEMS =					\
+ 	sparc_SunOS5.mak			\
+ 	sparc_unknown.mak			\
+ 	unknown_DebianGNULinux.mak		\
++	unknown_GentooLinux.mak		\
+ 	unknown_Linux.mak			\
+ 	unknown_RedHatLinux.mak			\
+         power_macintosh_Darwin.mak              \
+diff --git a/config/systems/unknown_GentooLinux.mak b/config/systems/unknown_GentooLinux.mak
+new file mode 100644
+index 0000000..3f9f39c
+--- /dev/null
++++ b/config/systems/unknown_GentooLinux.mak
+@@ -0,0 +1,41 @@
++ ###########################################################################
++ ##                                                                       ##
++ ##                Centre for Speech Technology Research                  ##
++ ##                     University of Edinburgh, UK                       ##
++ ##                         Copyright (c) 1996                            ##
++ ##                        All Rights Reserved.                           ##
++ ##                                                                       ##
++ ##  Permission is hereby granted, free of charge, to use and distribute  ##
++ ##  this software and its documentation without restriction, including   ##
++ ##  without limitation the rights to use, copy, modify, merge, publish,  ##
++ ##  distribute, sublicense, and/or sell copies of this work, and to      ##
++ ##  permit persons to whom this work is furnished to do so, subject to   ##
++ ##  the following conditions:                                            ##
++ ##   1. The code must retain the above copyright notice, this list of    ##
++ ##      conditions and the following disclaimer.                         ##
++ ##   2. Any modifications must be clearly marked as such.                ##
++ ##   3. Original authors' names are not deleted.                         ##
++ ##   4. The authors' names are not used to endorse or promote products   ##
++ ##      derived from this software without specific prior written        ##
++ ##      permission.                                                      ##
++ ##                                                                       ##
++ ##  THE UNIVERSITY OF EDINBURGH AND THE CONTRIBUTORS TO THIS WORK        ##
++ ##  DISCLAIM ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING      ##
++ ##  ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, IN NO EVENT   ##
++ ##  SHALL THE UNIVERSITY OF EDINBURGH NOR THE CONTRIBUTORS BE LIABLE     ##
++ ##  FOR ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES    ##
++ ##  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN   ##
++ ##  AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION,          ##
++ ##  ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF       ##
++ ##  THIS SOFTWARE.                                                       ##
++ ##                                                                       ##
++ ###########################################################################
++ ##                                                                       ##
++ ##                 Author: William Hubbs <williamh@gentoo.org>           ##
++ ## --------------------------------------------------------------------  ##
++ ## Settings for Gentoo Linux distributions.                              ##
++ ##                                                                       ##
++ ###########################################################################
++
++ include $(EST)/config/systems/Linux.mak
++ include $(EST)/config/systems/GentooLinux.mak
+-- 
+1.6.3.3
+

@@ -1,0 +1,95 @@
+From 067e73c8563247bc317ba5e632d5a56ccdf0de0c Mon Sep 17 00:00:00 2001
+From: William Hubbs <w.d.hubbs@gmail.com>
+Date: Fri, 17 Jul 2009 01:14:33 -0500
+Subject: [PATCH 8/9] remove shared setup references
+
+---
+ scripts/build_docbook_index.prl |    2 --
+ scripts/cxx_to_docbook.prl      |    2 --
+ scripts/pm.prl                  |    2 --
+ scripts/raw_to_xgraph.prl       |    2 --
+ scripts/resynth.sh              |    2 --
+ scripts/tex_to_images.prl       |    2 --
+ 6 files changed, 0 insertions(+), 12 deletions(-)
+
+diff --git a/scripts/build_docbook_index.prl b/scripts/build_docbook_index.prl
+index f07a234..728324d 100644
+--- a/scripts/build_docbook_index.prl
++++ b/scripts/build_docbook_index.prl
+@@ -35,8 +35,6 @@ sub useage
+ END
+ }
+ 
+-#__SHARED_SETUP__
+-
+ $title='';
+ $mode='debug';
+ $verbose=0;
+diff --git a/scripts/cxx_to_docbook.prl b/scripts/cxx_to_docbook.prl
+index 9bde698..a8f61c4 100644
+--- a/scripts/cxx_to_docbook.prl
++++ b/scripts/cxx_to_docbook.prl
+@@ -37,8 +37,6 @@ sub useage
+ END
+ }
+ 
+-#__SHARED_SETUP__
+-
+ $level=0;
+ $title=undef;
+ $chapter='chapter';
+diff --git a/scripts/pm.prl b/scripts/pm.prl
+index c2be12a..31bb512 100755
+--- a/scripts/pm.prl
++++ b/scripts/pm.prl
+@@ -56,8 +56,6 @@ sub useage
+ END
+ }
+ 
+-#__SHARED_SETUP__
+-
+ while ($#ARGV>=0)
+     {
+     if ($ARGV[0] eq "-f")
+diff --git a/scripts/raw_to_xgraph.prl b/scripts/raw_to_xgraph.prl
+index 8924981..f280ecf 100644
+--- a/scripts/raw_to_xgraph.prl
++++ b/scripts/raw_to_xgraph.prl
+@@ -56,8 +56,6 @@ Convert raw sample data into something xgraph can plot.
+ END
+ }
+ 
+-#__SHARED_SETUP__
+-
+ $stream = STDIN;
+ $sample_rate = 1;
+ 
+diff --git a/scripts/resynth.sh b/scripts/resynth.sh
+index 0cdc63d..f978fc8 100755
+--- a/scripts/resynth.sh
++++ b/scripts/resynth.sh
+@@ -63,8 +63,6 @@ EOF
+     exit $1
+ }
+ 
+-#__SHARED_SETUP__
+-
+ invert=false
+ voiced=''
+ pre=0
+diff --git a/scripts/tex_to_images.prl b/scripts/tex_to_images.prl
+index 08cb604..6799428 100644
+--- a/scripts/tex_to_images.prl
++++ b/scripts/tex_to_images.prl
+@@ -79,8 +79,6 @@ END
+     exit($_[0]);
+ }
+ 
+-#__SHARED_SETUP__
+-
+ $out_pattern="image_NNN.FFF";
+ $scale=3;
+ $over=2;
+-- 
+1.6.3.3
+

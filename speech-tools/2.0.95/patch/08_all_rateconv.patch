@@ -1,0 +1,26 @@
+From b7d4f822de69bd35c68372884018ea76f9fef2fd Mon Sep 17 00:00:00 2001
+From: William Hubbs <w.d.hubbs@gmail.com>
+Date: Fri, 17 Jul 2009 00:33:39 -0500
+Subject: [PATCH 7/9] fix coding error in rateconv
+
+---
+ base_class/rateconv.cc |    3 ++-
+ 1 files changed, 2 insertions(+), 1 deletions(-)
+
+diff --git a/base_class/rateconv.cc b/base_class/rateconv.cc
+index 3e1fb03..defcba5 100644
+--- a/base_class/rateconv.cc
++++ b/base_class/rateconv.cc
+@@ -384,7 +384,8 @@ static int filtering_on_buffers
+ 	    }
+ 	    fir_stereo(inp + inoffset + inbaseidx,
+ 		       coep + cycctr * firlen, firlen,
+-		       outp + outidx++, outp + outidx++);
++		       outp + outidx, outp + outidx + 1);
++	    outidx += 2;
+ 	    cycctr++;
+ 	    if (!(cycctr %= up))
+ 		inbaseidx += 2*down;
+-- 
+1.6.3.3
+
