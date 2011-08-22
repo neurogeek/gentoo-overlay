@@ -10,8 +10,8 @@ RESTRICT_PYTHON_ABIS='2.4 2.5 3.*'
 inherit python
 
 DESCRIPTION="Auto dependency analyser for Gentoo"
-HOMEPAGE="http://alexbers.dyndns.org/autodep/"
-SRC_URI="http://alexbers.dyndns.org/autodep/${P}.tar.bz2"
+HOMEPAGE="http://soc.dev.gentoo.org/~bay/autodep/"
+SRC_URI="http://soc.dev.gentoo.org/~bay/autodep/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
