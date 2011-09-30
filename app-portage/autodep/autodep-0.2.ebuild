@@ -23,10 +23,6 @@ DEPEND="sys-fs/fuse
 RDEPEND="sys-fs/fuse
 	app-portage/portage-utils"
 
-src_compile() {
-	emake || die
-}
-
 src_install() {
 	emake DESTDIR="${D}" install || die
 }
