@@ -9,7 +9,7 @@ inherit multilib
 
 DESCRIPTION="Redis client for Go."
 HOMEPAGE="https://github.com/simonz05/godis"
-SRC_URI="https://github.com/simonz05/godis/tarball/${REV} -> ${P}.tar.gz"
+SRC_URI="https://github.com/simonz05/${PN}/tarball/${REV} -> ${P}.tar.gz"
 
 LICENSE="as-is"
 SLOT="0"
@@ -64,7 +64,7 @@ src_compile() {
 src_install() {
 
 	if use examples; then
-		insinto "/usr/share/docs/${PF}/example"
+		insinto "/usr/share/doc/${PF}/example"
 		doins redis/example/*
 
 		rm -rf redis/example
