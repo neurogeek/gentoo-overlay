@@ -21,17 +21,16 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/simonz05-${PN}-${REV}"
 
+GOROOT="${ED}usr/$(get_libdir)/go"
+GOPKG="${PN}"
+
 src_prepare() {
 
 	if use examples; then
-		pushd "${S}/redis/examples" 2> /dev/null
-
 		for src in $(find . -name \*.go)
 		do
 		   sed -r "s/github.com\/simonz05\///" -i ${src}
 		done
-
-		popd 2> /dev/null
 	fi
 }
 
@@ -43,8 +42,8 @@ src_compile() {
 
 			local build_dir gopath
 
-			build_dir="${D}/build"
-			gopath="${build_dir}/src/${PN}"
+			build_dir="${S}/build"
+			gopath="${build_dir}/src/${GOPKG}"
 
 			mkdir -p $gopath
 			ln -s ${S}/$1 $gopath
@@ -65,13 +64,13 @@ src_compile() {
 src_install() {
 
 	if use examples; then
-		insinto "/usr/share/docs/${PF}/examples"
+		insinto "/usr/share/docs/${PF}/example"
 		doins redis/example/*
 
 		rm -rf redis/example
 	fi
 
-	insinto "/usr/$(get_libdir)/go/src/pkg/${PN}"
+	insinto "/usr/$(get_libdir)/go/src/pkg/${GOPKG}"
 	doins -r redis
 
 }
