@@ -1,0 +1,12 @@
+diff --git a/base_class/Makefile b/base_class/Makefile
+index 7a5d802..d2deabc 100644
+--- a/base_class/Makefile
++++ b/base_class/Makefile
+@@ -72,7 +72,3 @@ FILES = $(SRCS) EST_Pathname_win32.cc $(T) $(H)\
+ ALL = .buildlib $(BUILD_DIRS)
+ 
+ include $(TOP)/config/common_make_rules
+-
+-# Always compile with -O3 as its an important function
+-rateconv.o:
+-	$(CXX_COMMAND) -O3 rateconv.cc -o rateconv.o

@@ -1,0 +1,25 @@
+From 82aa4c8a0c6dbff9186a4895a6d890327c0cb5dd Mon Sep 17 00:00:00 2001
+From: William Hubbs <w.d.hubbs@gmail.com>
+Date: Thu, 16 Jul 2009 22:21:59 -0500
+Subject: [PATCH 4/9] documentation update for gcc 4.2
+
+---
+ doc/estjavaapp.sgml |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/doc/estjavaapp.sgml b/doc/estjavaapp.sgml
+index b5f4343..6b06b52 100644
+--- a/doc/estjavaapp.sgml
++++ b/doc/estjavaapp.sgml
+@@ -105,7 +105,7 @@ temporary directory and linking the bits together as follows:
+ 	&shellprompt; <userinput>cd tmpdir</userinput>
+ 	&shellprompt; <userinput>ar x ../libgcc.a</userinput>
+ 	&shellprompt; <userinput>cd ..</userinput>
+-	&shellprompt; <userinput>gcc -shared -fno-shared-data -o libgcc.so.2.7.2 tmpdir/*.o</userinput>
++	&shellprompt; <userinput>gcc -shared -o libgcc.so.2.7.2 tmpdir/*.o</userinput>
+ </screen>
+ </para>
+ </sect1>
+-- 
+1.6.3.3
+

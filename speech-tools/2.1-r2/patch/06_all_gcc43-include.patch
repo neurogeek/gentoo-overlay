@@ -1,0 +1,37 @@
+From b1ac28f4794d991d8f0c713039d4109a456a94de Mon Sep 17 00:00:00 2001
+From: William Hubbs <w.d.hubbs@gmail.com>
+Date: Thu, 16 Jul 2009 23:25:53 -0500
+Subject: [PATCH 5/9] gcc 4.3 include file fix
+
+---
+ base_class/EST_TSimpleMatrix.cc |    1 +
+ base_class/EST_TSimpleVector.cc |    1 +
+ 2 files changed, 2 insertions(+), 0 deletions(-)
+
+diff --git a/base_class/EST_TSimpleMatrix.cc b/base_class/EST_TSimpleMatrix.cc
+index 32aab33..aa4ed9c 100644
+--- a/base_class/EST_TSimpleMatrix.cc
++++ b/base_class/EST_TSimpleMatrix.cc
+@@ -42,6 +42,7 @@
+ 
+ #include "EST_TSimpleMatrix.h"
+ #include "EST_TVector.h"
++#include <cstring>
+ #include <fstream>
+ #include <iostream>
+ #include "EST_cutils.h"
+diff --git a/base_class/EST_TSimpleVector.cc b/base_class/EST_TSimpleVector.cc
+index 52df5e2..26bf850 100644
+--- a/base_class/EST_TSimpleVector.cc
++++ b/base_class/EST_TSimpleVector.cc
+@@ -42,6 +42,7 @@
+ 
+ #include "EST_TSimpleVector.h"
+ #include "EST_matrix_support.h"
++#include <cstring>
+ #include <fstream>
+ #include "EST_cutils.h"
+ 
+-- 
+1.6.3.3
+

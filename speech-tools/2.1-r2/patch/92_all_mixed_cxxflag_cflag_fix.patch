@@ -1,0 +1,12 @@
+diff -uNr speech_tools.orig/config/compilers/gcc_defaults.mak speech_tools/config/compilers/gcc_defaults.mak
+--- speech_tools.orig/config/compilers/gcc_defaults.mak	2012-11-28 18:33:27.000000000 -0500
++++ speech_tools/config/compilers/gcc_defaults.mak	2012-11-28 18:33:46.000000000 -0500
+@@ -48,7 +48,7 @@
+ COMPILER_VERSION_COMMAND=$(CXX) -v 2>&1 | tail -1 | sed -e 's/^....//'
+ 
+ CFLAGS  = $(GCC_SYSTEM_OPTIONS) $(CC_OTHER_FLAGS)
+-CXXFLAGS  =  $(GCC_SYSTEM_OPTIONS) -fno-implicit-templates $(CC_OTHER_FLAGS)
++CXXFLAGS  =  $(GCC_SYSTEM_OPTIONS) -fno-implicit-templates $(CXX_OTHER_FLAGS)
+ 
+ DEBUG_CCFLAGS   = -g
+ DEBUG_CXXFLAGS  = -g

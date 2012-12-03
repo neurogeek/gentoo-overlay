@@ -1,0 +1,25 @@
+diff --git a/config/config.in b/config/config.in
+index 8edebc8..53f71d6 100644
+--- a/config/config.in
++++ b/config/config.in
+@@ -56,16 +56,16 @@ CONFIGURATION =
+ ##
+ ## OPTIMISE=4 will turn off DEBUG
+ 
+-OPTIMISE=3
++OPTIMISE=0
+ WARN=1
+ # VERBOSE=1
+-#DEBUG=1
++DEBUG=0
+ # PROFILE=gprof
+-#SHARED=2
++SHARED=2
+ 
+ ## Directory specific selections which override the above
+ 
+-OPTIMISE_sigpr = 3
++#OPTIMISE_sigpr = 3
+ 
+ ###########################################################################
+ ## Feature selection.

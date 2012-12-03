@@ -1,0 +1,11 @@
+diff -uNr speech_tools.orig/config/rules/defaults.mak speech_tools/config/rules/defaults.mak
+--- speech_tools.orig/config/rules/defaults.mak	2011-02-08 19:58:10.000000000 -0500
++++ speech_tools/config/rules/defaults.mak	2011-02-08 19:58:53.000000000 -0500
+@@ -202,6 +202,6 @@
+ ## Link a program (not including libraries)
+ 
+ ifndef LINK_COMMAND
+-    LINK_COMMAND = $(CXX) $(LINKFLAGS) $(TEMPLATES) 
++    LINK_COMMAND = $(CXX) $(LINKFLAGS) $(OS_LIBS) $(TEMPLATES) 
+ endif
+ 

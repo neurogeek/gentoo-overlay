@@ -1,0 +1,82 @@
+diff -uNr speech_tools.orig/include/EST_TIterator.h speech_tools/include/EST_TIterator.h
+--- speech_tools.orig/include/EST_TIterator.h	2012-12-02 22:15:30.000000000 +0000
++++ speech_tools/include/EST_TIterator.h	2012-12-02 22:17:37.000000000 +0000
+@@ -209,7 +209,7 @@
+ 
+   /// Create an iterator ready to run over the given container.
+   EST_TStructIterator(const Container &over)
+-    { begin(over); }
++    { this->begin(over); }
+ 
+   const Entry *operator ->() const
+     {return &this->current();}
+@@ -289,7 +289,7 @@
+ 
+   /// Create an iterator ready to run over the given container.
+   EST_TRwStructIterator(Container &over)
+-    { begin(over); }
++    { this->begin(over); }
+ 
+   Entry *operator ->() const
+     {return &this->current();}
+
+diff -uNr speech_tools.orig/base_class/EST_TSimpleMatrix.cc speech_tools/base_class/EST_TSimpleMatrix.cc
+--- speech_tools.orig/base_class/EST_TSimpleMatrix.cc	2012-12-02 22:24:35.000000000 +0000
++++ speech_tools/base_class/EST_TSimpleMatrix.cc	2012-12-02 22:29:10.000000000 +0000
+@@ -99,7 +99,7 @@
+ 	{
+ 	  int copy_r = Lof(this->num_rows(), new_rows);
+ 
+-	  just_resize(new_rows, new_cols, &old_vals);
++	  this->just_resize(new_rows, new_cols, &old_vals);
+ 
+           for (q=0; q<(copy_r*new_cols*sizeof(T)); q++) /* memcpy */
+               ((char *)this->p_memory)[q] = ((char *)old_vals)[q];
+@@ -128,9 +128,9 @@
+ 	  int copy_r = Lof(this->num_rows(), new_rows);
+ 	  int copy_c = Lof(this->num_columns(), new_cols);
+ 	  
+-	  just_resize(new_rows, new_cols, &old_vals);
++	  this->just_resize(new_rows, new_cols, &old_vals);
+ 
+-	  set_values(old_vals,
++	  this->set_values(old_vals,
+ 		     old_row_step, old_column_step,
+ 		     0, copy_r,
+ 		     0, copy_c);
+diff -uNr speech_tools.orig/base_class/EST_TSimpleVector.cc speech_tools/base_class/EST_TSimpleVector.cc
+--- speech_tools.orig/base_class/EST_TSimpleVector.cc	2012-12-02 22:24:35.000000000 +0000
++++ speech_tools/base_class/EST_TSimpleVector.cc	2012-12-02 22:29:42.000000000 +0000
+@@ -71,7 +71,7 @@
+   int old_offset = this->p_offset;
+   unsigned int q;
+ 
+-  just_resize(newn, &old_vals);
++  this->just_resize(newn, &old_vals);
+ 
+   if (set && old_vals)
+     {
+diff -uNr speech_tools.orig/config/compilers/gcc_defaults.mak speech_tools/config/compilers/gcc_defaults.mak
+--- speech_tools.orig/config/compilers/gcc_defaults.mak	2012-12-02 22:24:35.000000000 +0000
++++ speech_tools/config/compilers/gcc_defaults.mak	2012-12-02 22:34:22.000000000 +0000
+@@ -81,7 +81,7 @@
+ SHARED_LINKFLAGS = 
+ 
+ ifndef GCC_MAKE_SHARED_LIB
+-    MAKE_SHARED_LIB = $(CXX) -shared -fno-shared-data -o XXX
++    MAKE_SHARED_LIB = $(CXX) -shared -o XXX
+ else
+     MAKE_SHARED_LIB = $(GCC_MAKE_SHARED_LIB)
+ endif
+diff -uNr speech_tools.orig/include/EST_TNamedEnum.h speech_tools/include/EST_TNamedEnum.h
+--- speech_tools.orig/include/EST_TNamedEnum.h	2012-12-02 22:24:35.000000000 +0000
++++ speech_tools/include/EST_TNamedEnum.h	2012-12-02 22:26:00.000000000 +0000
+@@ -130,7 +130,7 @@
+ 	{this->initialise((const void *)defs); };
+   EST_TNamedEnumI(EST_TValuedEnumDefinition<const char *,const char *,INFO> defs[], ENUM (*conv)(const char *))
+ 	{this->initialise((const void *)defs, conv); };
+-  const char *name(ENUM tok, int n=0) const {return value(tok,n); };
++  const char *name(ENUM tok, int n=0) const {return this->value(tok,n); };
+ 
+ };
+ 
