@@ -19,7 +19,8 @@ KEYWORDS="~x86 ~amd64"
 IUSE=""
 
 DEPEND=">=net-libs/nodejs-0.8.10"
-RDEPEND="${DEPEND}"
+RDEPEND=">=dev-nodejs/underscore-1.4.4
+		 ${DEPEND}"
 
 S="${WORKDIR}/${MY_P}"
 
