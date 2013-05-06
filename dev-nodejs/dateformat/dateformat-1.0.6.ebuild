@@ -8,7 +8,7 @@ UPSTREAM="1.2.3"
 
 inherit multilib
 
-DESCRIPTION="Higher-order functions and common patterns for asynchronous code"
+DESCRIPTION="A package for Steven Levithan's excellent dateFormat() function."
 HOMEPAGE="https://npmjs.org/package/dateformat"
 SRC_URI="http://registry.npmjs.org/dateformat/-/${P}-${UPSTREAM}.tgz"
 
