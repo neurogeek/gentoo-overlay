@@ -18,7 +18,8 @@ IUSE=""
 
 DEPEND=">=net-libs/nodejs-0.8.10"
 RDEPEND=">=dev-nodejs/lru-cache-2.3.0
-		 >=dev-nodejs/sigmund-1.0.0"
+		 >=dev-nodejs/sigmund-1.0.0
+		 ${DEPEND}"
 
 src_unpack() {
 	unpack "${A}"
