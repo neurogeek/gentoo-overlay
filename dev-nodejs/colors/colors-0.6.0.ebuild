@@ -8,9 +8,9 @@ REV="1"
 
 inherit multilib
 
-DESCRIPTION="Higher-order functions and common patterns for asynchronous code"
+DESCRIPTION="Adds colors to your node.js console"
 HOMEPAGE="https://npmjs.org/package/colors"
-SRC_URI="http://registry.npmjs.org/colors/-/${P}-${REV}.tgz"
+SRC_URI="http://registry.npmjs.org/${PN}/-/${P}-${REV}.tgz"
 
 LICENSE="MIT"
 SLOT="0"
