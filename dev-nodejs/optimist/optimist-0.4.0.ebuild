@@ -18,7 +18,8 @@ KEYWORDS="~x86 ~amd64"
 IUSE="example"
 
 DEPEND=">=net-libs/nodejs-0.8.10"
-RDEPEND="${DEPEND}"
+RDEPEND=">=dev-nodejs/wordwrap-0.0.2
+		 ${DEPEND}"
 
 src_unpack() {
 	unpack "${A}"
