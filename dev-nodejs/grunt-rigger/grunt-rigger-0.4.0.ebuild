@@ -9,7 +9,7 @@ inherit multilib
 
 DESCRIPTION="Rigging tasks for elegant includes."
 HOMEPAGE="https://npmjs.org/package/grunt-rigger"
-SRC_URI="http://registry.npmjs.org/${PN}/-/${P}.tgz"
+SRC_URI="http://registry.npmjs.org/${PN}/${PV}/${P}.tgz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -38,5 +38,3 @@ src_install() {
 
 	dodoc README* LICENSE-MIT AUTHORS
 }
-
-AUTHORS  Gruntfile.js  LICENSE-MIT  package.json  README.md  tasks  test
