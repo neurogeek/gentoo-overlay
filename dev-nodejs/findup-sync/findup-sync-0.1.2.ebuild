@@ -34,7 +34,7 @@ src_install() {
 	local node_modules="${D}/usr/$(get_libdir)/node_modules/${NODEJS_MODULE}"
 
 	mkdir -p ${node_modules} || die "Could not create DEST folder"
-	cp -r ${S}/{lib,package.json} ${node_modules}
+	cp -r ${S}/{Gruntfile.js,lib,package.json} ${node_modules}
 
-	dodoc README*
+	dodoc README* LICENSE-MIT
 }
