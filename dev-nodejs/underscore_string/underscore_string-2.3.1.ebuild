@@ -5,7 +5,7 @@
 EAPI=4
 MY_PN=${PN/_/.}
 MY_P=${MY_PN}-${PV}
-NODEJS_MODULE=${PN}
+NODEJS_MODULE=${MY_PN}
 
 inherit multilib
 
