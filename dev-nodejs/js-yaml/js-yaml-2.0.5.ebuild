@@ -34,10 +34,10 @@ src_install() {
 	local node_modules="${D}/usr/$(get_libdir)/node_modules/${NODEJS_MODULE}"
 
 	mkdir -p ${node_modules} || die "Could not create DEST folder"
-	cp -r ${S}/{lib,package.json} ${node_modules}
+	cp -r ${S}/{index.js,lib,package.json} ${node_modules}
 
 	dobin bin/${PN}.js
-	dodoc README* LICENSE HISTORY.md index.js
+	dodoc README* LICENSE HISTORY.md
 
 	if use example; then
 		dodoc -r examples
