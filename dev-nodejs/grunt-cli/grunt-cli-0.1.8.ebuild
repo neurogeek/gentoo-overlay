@@ -18,7 +18,7 @@ IUSE=""
 
 DEPEND=">=net-libs/nodejs-0.8.10"
 RDEPEND=">=dev-nodejs/nopt-2.1.1
-		 >=dev-nodejs/findup-sync-0.1.2
+		 >=dev-nodejs/findup-sync-0.1.0
 		 >=dev-nodejs/resolve-0.3.1
 		 ${DEPEND}"
 
