@@ -7,7 +7,8 @@ NODEJS_MODULE=${PN}
 
 inherit multilib
 
-DESCRIPTION="Find files or sub-directories in a clear way"
+DESCRIPTION="A low-level utility library delivering consistency, customization,
+performace and extra features."
 HOMEPAGE="https://npmjs.org/package/lodash"
 SRC_URI="http://registry.npmjs.org/${PN}/-/${P}.tgz"
 
