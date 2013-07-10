@@ -80,24 +80,28 @@ npm_src_compile() {
 # also taking care of NPM_FILES, NPM_EXTRA_FILES, NPM_DOCS and NPM_EXTRA_DOCS
 
 npm_src_install() {
+	local npm_files="${NPM_FILES} ${NPM_EXTRA_FILES}"
 	local node_modules="${D}/usr/$(get_libdir)/node_modules/${NPM_MODULE}"
+
 	mkdir -p ${node_modules} || die "Could not create DEST folder"
 
-    # These are basically the 'standard' files in an npm package
-	# We'll handle additional files in NPM_EXTRA_FILES
-	for f in "${NPM_FILES} ${NPM_EXTRA_FILES}"
+	for f in ${npm_files}
 	do
         if [[ -e "${S}/$f" ]]; then
             cp -r "${S}/$f" ${node_modules}
         fi
     done
 	
-	for f in "${NPM_DOCS} ${NPM_EXTRA_DOCS}"
-	do
-		if [[ -e "${S}/$f" ]]; then
-			dodoc -r "${S}/$f"
-		fi
-	done
+	if use doc; then
+		local npm_docs="${NPM_DOCS} ${NPM_EXTRA_DOCS}"
+
+		for f in $npm_docs
+		do
+			if [[ -e "${S}/$f" ]]; then
+				dodoc -r "${S}/$f"
+			fi
+		done
+	fi
 }
 
 EXPORT_FUNCTIONS src_unpack src_compile src_install
