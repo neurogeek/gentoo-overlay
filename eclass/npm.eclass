@@ -92,7 +92,7 @@ npm_src_install() {
         fi
     done
     
-    if use doc; then
+    if has doc ${USE}; then
         local npm_docs="${NPM_DOCS} ${NPM_EXTRA_DOCS}"
 
         for f in $npm_docs
