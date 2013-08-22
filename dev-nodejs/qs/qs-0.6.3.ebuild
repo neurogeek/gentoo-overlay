@@ -3,36 +3,15 @@
 # $Header: $
 
 EAPI=4
-NODEJS_MODULE=${PN}
 
-inherit multilib
+inherit npm
 
 DESCRIPTION="QueryString parser"
-HOMEPAGE="https://npmjs.org/package/qs"
-SRC_URI="http://registry.npmjs.org/${PN}/-/${P}.tgz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND=">=net-libs/nodejs-0.8.10"
-RDEPEND="${DEPEND}"
-
-src_unpack() {
-	unpack "${A}"
-	mv "${WORKDIR}/package" ${S}
-}
-
-src_compile() {
-	true
-}
-
-src_install() {
-	local node_modules="${D}/usr/$(get_libdir)/node_modules/${NODEJS_MODULE}"
-
-	mkdir -p ${node_modules} || die "Could not create DEST folder"
-	cp -r ${S}/{index.js,package.json} ${node_modules}
-
-	dodoc Readme*
-}
+RDEPEND=">=net-libs/nodejs-0.8.10"
+DEPEND=""
