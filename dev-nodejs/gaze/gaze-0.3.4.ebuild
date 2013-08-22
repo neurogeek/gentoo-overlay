@@ -3,39 +3,20 @@
 # $Header: $
 
 EAPI=4
-NODEJS_MODULE=${PN}
 
-inherit multilib
+inherit npm
 
 DESCRIPTION="A globbing fs.watch wrapper built from the best parts of other fine
 watch libs."
-HOMEPAGE="https://npmjs.org/package/gaze"
-SRC_URI="http://registry.npmjs.org/${PN}/-/${P}.tgz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND=">=net-libs/nodejs-0.8.10"
+DEPEND=""
 RDEPEND=">=dev-nodejs/minimatch-0.2.12
-		 >=dev-nodejs/fileset-0.1.5
-		 ${DEPEND}"
+	>=dev-nodejs/fileset-0.1.5
+	>=net-libs/nodejs-0.8.10"
 
-src_unpack() {
-	unpack "${A}"
-	mv "${WORKDIR}/package" ${S}
-}
-
-src_compile() {
-	true
-}
-
-src_install() {
-	local node_modules="${D}/usr/$(get_libdir)/node_modules/${NODEJS_MODULE}"
-
-	mkdir -p ${node_modules} || die "Could not create DEST folder"
-	cp -r ${S}/{lib,package.json,Gruntfile.js} ${node_modules}
-
-	dodoc AUTHORS README* LICENSE-MIT
-}
+NPM_EXTRA_FILES="Gruntfile.js"
