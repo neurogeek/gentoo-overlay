@@ -3,10 +3,9 @@
 # $Header: $
 
 EAPI=4
-NODEJS_MODULE=${PN}
 REV="1"
 
-inherit multilib
+inherit npm
 
 DESCRIPTION="Adds colors to your node.js console"
 HOMEPAGE="https://npmjs.org/package/colors"
@@ -14,26 +13,10 @@ SRC_URI="http://registry.npmjs.org/${PN}/-/${P}-${REV}.tgz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND=">=net-libs/nodejs-0.8.10"
-RDEPEND="${DEPEND}"
+RDEPEND=">=net-libs/nodejs-0.8.10"
+DEPEND=""
 
-src_unpack() {
-	unpack "${A}"
-	mv "${WORKDIR}/package" ${S}
-}
-
-src_compile() {
-	true
-}
-
-src_install() {
-	local node_modules="${D}/usr/$(get_libdir)/node_modules/${NODEJS_MODULE}"
-
-	mkdir -p ${node_modules} || die "Could not create DEST folder"
-	cp -r ${S}/{colors.js,package.json} ${node_modules}
-
-	dodoc MIT-LICENSE.txt ReadMe.md
-}
+NPM_EXTRA_FILES="colors.js"
