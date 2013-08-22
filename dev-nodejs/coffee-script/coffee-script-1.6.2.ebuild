@@ -3,38 +3,27 @@
 # $Header: $
 
 EAPI=4
-NODEJS_MODULE=${PN}
 
-inherit multilib
+inherit npm
 
-DESCRIPTION="Unfancy JavaScript"
-HOMEPAGE="https://npmjs.org/package/coffee-script"
-SRC_URI="http://registry.npmjs.org/${PN}/-/${P}.tgz"
+DESCRIPTION="Unfancy JavaScript."
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
-IUSE="extras"
+KEYWORDS="~amd64 ~x86"
+IUSE="doc extras"
 
 DEPEND=">=net-libs/nodejs-0.8.10"
 RDEPEND="${DEPEND}"
 
-src_unpack() {
-	unpack "${A}"
-	mv "${WORKDIR}/package" ${S}
-}
-
-src_compile() {
-	true
-}
+NPM_DOCS="LICENSE CNAME CONTRIBUTING.md"
 
 src_install() {
-	local node_modules="${D}/usr/$(get_libdir)/node_modules/${NODEJS_MODULE}"
-
-	mkdir -p ${node_modules} || die "Could not create DEST folder"
-	cp -r ${S}/{lib,package.json} ${node_modules}
+	npm_src_install
 
 	dobin bin/*
-	dodoc README* LICENSE CNAME CONTRIBUTING.md
-	dodoc -r extras
+
+	if use extras; then
+		dodoc -r extras
+	fi
 }
