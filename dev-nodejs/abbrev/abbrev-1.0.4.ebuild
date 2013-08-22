@@ -4,7 +4,7 @@
 
 EAPI=4
 
-inherit multilib npm
+inherit npm
 
 DESCRIPTION="Like ruby's abbrev module, but in js."
 
