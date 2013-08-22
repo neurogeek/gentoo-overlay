@@ -3,36 +3,15 @@
 # $Header: $
 
 EAPI=4
-NODEJS_MODULE=${PN}
 
-inherit multilib
+inherit npm
 
-DESCRIPTION="Higher-order functions and common patterns for asynchronous code"
-HOMEPAGE="https://npmjs.org/package/eventemitter2"
-SRC_URI="http://registry.npmjs.org/eventemitter2/-/${P}.tgz"
+DESCRIPTION="Higher-order functions and common patterns for asynchronous code."
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND=">=net-libs/nodejs-0.8.10"
-RDEPEND="${DEPEND}"
-
-src_unpack() {
-	unpack "${A}"
-	mv "${WORKDIR}/package" ${S}
-}
-
-src_compile() {
-	true
-}
-
-src_install() {
-	local node_modules="${D}/usr/$(get_libdir)/node_modules/${NODEJS_MODULE}"
-
-	mkdir -p ${node_modules} || die "Could not create DEST folder"
-	cp -r ${S}/{lib,package.json} ${node_modules}
-
-	dodoc README*
-}
+RDEPEND=">=net-libs/nodejs-0.8.10"
+DEPEND=""
