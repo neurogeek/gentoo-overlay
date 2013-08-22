@@ -3,40 +3,26 @@
 # $Header: $
 
 EAPI=4
-NODEJS_MODULE=${PN}
 
-inherit multilib
+inherit npm
 
 DESCRIPTION="Make streaming http requests."
-HOMEPAGE="https://npmjs.org/package/hyperquest"
-SRC_URI="http://registry.npmjs.org/${PN}/-/${P}.tgz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="example"
 
-DEPEND=">=net-libs/nodejs-0.8.10"
+DEPEND=""
 RDEPEND=">=dev-nodejs/through-2.3.4
-		 >=dev-nodejs/duplexer-0.1.1
-		 ${DEPEND}"
+	>=dev-nodejs/duplexer-0.1.1
+	>=net-libs/nodejs-0.8.10
+	${DEPEND}"
 
-src_unpack() {
-	unpack "${A}"
-	mv "${WORKDIR}/package" ${S}
-}
-
-src_compile() {
-	true
-}
+NPM_DOCS="readme*"
 
 src_install() {
-	local node_modules="${D}/usr/$(get_libdir)/node_modules/${NODEJS_MODULE}"
-
-	mkdir -p ${node_modules} || die "Could not create DEST folder"
-	cp -r ${S}/{index.js,package.json} ${node_modules}
-
-	dodoc readme* LICENSE
+	npm_src_install
 
 	if use example; then
 		dodoc -r example
