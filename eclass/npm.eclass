@@ -24,13 +24,15 @@ inherit multilib
 # The Default value for NPM_MODULE is ${PN}
 #
 # Example: NPM_MODULE="${MY_PN}"
-NPM_MODULE="${PN}"
+if [[ -z $NPM_MODULE ]]; then
+	NPM_MODULE="${PN}"
+fi
 
 # @ECLASS-VARIABLE: NPM_FILES
 # @INTERNAL
 # @DESCRIPTION:
 # Files and directories that usually come in a standard NodeJS/npm module.
-NPM_FILES="index.js lib package.json ${PN}.js"
+NPM_FILES="index.js lib package.json ${NPM_MODULE}.js"
 
 # @ECLASS-VARIABLE: NPM_DOCS
 # @DESCRIPTION:
