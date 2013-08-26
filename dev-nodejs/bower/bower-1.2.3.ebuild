@@ -12,6 +12,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
+
 DEPEND=""
 RDEPEND=">=net-libs/nodejs-0.8.10
 	>=dev-nodejs/abbrev-1.0.4
@@ -51,3 +52,11 @@ RDEPEND=">=net-libs/nodejs-0.8.10
 	>=dev-nodejs/update-notifier-0.1.3
 	>=dev-nodejs/which-1.0.5
 	${DEPEND}"
+
+NPM_EXTRA_FILES="Gruntfile.js templates"
+
+src_install() {
+	npm_src_install
+
+	dobin bin/bower
+}
