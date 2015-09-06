@@ -1,8 +1,8 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Id$
 
-EAPI=4
+EAPI=5
 
 inherit npm
 
@@ -14,7 +14,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND=">=net-libs/nodejs-0.8.10"
 DEPEND=""
+RDEPEND="${DEPEND}
+		>=net-libs/nodejs-0.8.10"
 
 NPM_EXTRA_FILES="build.js build dist vendor"
